@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Dashboard from "./components/dashboard";
+import AddPost from "./components/addPost";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.PureComponent {
+  render() {
+    return (
+      <BrowserRouter>
+        <div className="m-20">
+          <div className="border rounded-md py-5 px-30 w-4/12 mx-auto shadow-2xl">
+            <div className="text-center">
+              <Routes>
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/AddPost" element={<AddPost />} />
+              </Routes>
+            </div>
+          </div>
+        </div>
+      </BrowserRouter>
+    );
+  }
 }
 
 export default App;
