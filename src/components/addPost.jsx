@@ -1,9 +1,15 @@
 import { Button, TextField } from "@mui/material";
 import React from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
+export const withRouter = (WrappedComponent) => (props) => {
+  const params = useParams();
+  return <WrappedComponent {...props} params={params} />;
+};
 class AddPost extends React.Component {
   constructor(props) {
     super(props);
+    console.log(this.props);
     this.state = {
       userPost: {
         userId: 0,
@@ -11,6 +17,8 @@ class AddPost extends React.Component {
         caption: null,
         location: null,
         heartCount: 0,
+        commentHide: true,
+        comments: [],
       },
       userPosts: [],
     };
@@ -18,30 +26,50 @@ class AddPost extends React.Component {
     this.addPostClick = this.addPostClick.bind(this);
     this.onImageChange = this.onImageChange.bind(this);
   }
+
   componentDidMount() {
-    this.setState({
-      userPost: {
-        userId: 0,
-      },
-    });
+    const { paramUserId } = this.props.params;
+    if (paramUserId) {
+      const userData = JSON.parse(localStorage.getItem("localUserPost"));
+      const userPost = userData.find((data) => {
+        return data.userId === parseInt(paramUserId);
+      });
+      this.setState({
+        userPost: userPost,
+      });
+    }
   }
 
   componentDidUpdate() {
     console.log("userPost did update: ", this.state.userPost);
   }
   addPostClick = () => {
+    const { paramUserId } = this.props.params;
+    if (paramUserId) {
+      const userData = JSON.parse(localStorage.getItem("localUserPost"));
+      const userPostIndex = userData.find(
+        (data) => data.userId === parseInt(paramUserId)
+      )?.userId;
+      console.log("userPostIndex: ", userPostIndex);
+      // const index = userData.findIndex((item)=>item.userId === )
+    }
+
     const { caption, location } = this.state.userPost;
     if (caption && location) {
       var array = localStorage.getItem("localUserPost");
+
       let items = [];
 
       if (array) {
         items = JSON.parse(array);
       }
-
       items.push(this.state.userPost);
-
       items.forEach((items, index) => {
+        if (index + 1 !== items.userId) {
+          items.heartCount = 0;
+          items.comments = [];
+          items.commentHide = true;
+        }
         items.userId = index + 1;
       });
 
@@ -57,7 +85,7 @@ class AddPost extends React.Component {
   onImageChange = (e) => {
     const reader = new FileReader();
     reader.readAsDataURL(e.target.files[0]);
-    var imgUrl;
+    // var imgUrl;
     reader.onload = (event) => {
       this.setState({
         userPost: {
@@ -116,4 +144,4 @@ class AddPost extends React.Component {
     );
   }
 }
-export default AddPost;
+export default withRouter(AddPost);
