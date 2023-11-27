@@ -74,6 +74,7 @@ class Dashboard extends React.PureComponent {
                   backgroundPosition: "center",
                   backgroundSize: "contain",
                   backgroundRepeat: "no-repeat",
+                  paddingBottom: "15px"
                 }}
               >
                 <div className="flex justify-between mx-2">
@@ -86,9 +87,9 @@ class Dashboard extends React.PureComponent {
                   >
                     {item.location}
                   </p>
-                  <Link to={`/addPost/${item.userId}`} className="font-semibold text-xs">Edit?</Link>
+                  <Link to={`/addPost/${item.userId}`} className="font-semibold text-xs">Edit</Link>
                 </div>
-                <span style={{ marginTop: "170px" }}>
+                <span style={{ marginTop: "170px", position: "relative", top: "46px", padding: "4px 0px" }}>
                   <span
                     style={{
                       marginLeft: "5px",
@@ -131,6 +132,8 @@ class Dashboard extends React.PureComponent {
                     textAlign: "left",
                     marginLeft: "5px",
                     marginTop: "20px",
+                    position: "relative",
+                    top: "15px",
                   }}
                 >
                   {item.caption}
