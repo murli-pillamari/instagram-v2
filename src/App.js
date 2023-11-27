@@ -14,6 +14,7 @@ class App extends React.PureComponent {
               <Routes>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/AddPost" element={<AddPost />} />
+                <Route path="/AddPost/:paramUserId" element={<AddPost />} />
               </Routes>
             </div>
           </div>
