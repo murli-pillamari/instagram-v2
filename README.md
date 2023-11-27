@@ -5,7 +5,7 @@ Created social media web application to handle add or view the own posts with be
  -  Add location, caption,
  -  Add or edit post
 
-Below are teh screenshots:
+# Below are teh screenshots:
 1: Add Post:
 
 ![image](https://github.com/murli-pillamari/instagram-v2/assets/70046894/2dd48df3-4b63-44d3-9ff6-c9159bf899f5)
