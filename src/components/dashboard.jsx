@@ -77,7 +77,7 @@ class Dashboard extends React.PureComponent {
                   paddingBottom: "15px"
                 }}
               >
-                <div className="flex justify-between mx-2">
+                <div className="flex justify-between mx-2 font-bold">
                   <p
                     style={{
                       fontSize: "10px",
