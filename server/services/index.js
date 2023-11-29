@@ -32,5 +32,5 @@ app.get("/api/users/:id", (req, res) => {
 });
 
 app.listen("3000", () => {
-  console.log("Starting the sever!");
+  console.log("Starting the sever on 3000!");
 });
