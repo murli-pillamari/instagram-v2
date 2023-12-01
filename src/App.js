@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./components/dashboard";
 import AddPost from "./components/addPost";
+import LoginPage from "./components/common-modules/login";
 
 class App extends React.PureComponent {
   render() {
@@ -15,6 +16,7 @@ class App extends React.PureComponent {
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/AddPost" element={<AddPost />} />
                 <Route path="/AddPost/:paramUserId" element={<AddPost />} />
+                <Route path="/login" element={<LoginPage />} />
               </Routes>
             </div>
           </div>

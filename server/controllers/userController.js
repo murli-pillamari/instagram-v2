@@ -14,4 +14,16 @@ async function createUser(name, email) {
   }
 }
 
-module.exports = { createUser };
+async function getUsers() {
+  try {
+    const db = await connect();
+    const collection = db.collection("users");
+    // const newUser = new User(name, email);
+    const result = await collection.find();
+    return result.toArray();
+  } catch (err) {
+    console.error("Error creating user:", err);
+  }
+}
+
+module.exports = { createUser, getUsers };
