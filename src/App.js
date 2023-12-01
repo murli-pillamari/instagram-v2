@@ -9,7 +9,7 @@ class App extends React.PureComponent {
     return (
       <BrowserRouter>
         <div className="m-20">
-          <div className="border rounded-md py-5 px-30 w-4/12 mx-auto shadow-2xl">
+          <div className="border rounded-md py-5 px-30 w-4/12 mx-auto shadow-2xl overflow-y-scroll max-h-screen">
             <div className="text-center">
               <Routes>
                 <Route path="/" element={<Dashboard />} />
