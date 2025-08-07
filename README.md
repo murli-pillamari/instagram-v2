@@ -21,6 +21,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+First run below command to run on local:
+### `npm start`
+
 In the project directory, you can run:
 
 ### `npm start`
